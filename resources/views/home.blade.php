@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <a href="" class="elegant bold orange-hover">Followers</a>
-                                <p class="cool-orange bold">2.4mil</p>
+                                <p class="cool-orange bold">3.4mil</p>
                             </div>
                         </div>
                         <div class="row mt-1">
