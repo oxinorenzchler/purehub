@@ -122,7 +122,7 @@
                                 <li><a  onclick="showEdit({{$post->id}})"><i class="fas fa-edit"></i> Edit</a></li> 
                                 <li><a onclick="deletePost({{$post->id}})"><i class="fas fa-trash"></i> Delete</a></li> 
                             </ul>
-                            
+
                             @endif
                         </span> 
                     </div>
@@ -138,7 +138,7 @@
 
                     @if($post->media != null)
                         <div class="img-post-container">
-                            <img src="{{$post->media}}" alt="" class="img-responsive post-img img-rounded">
+                            <img src="/storage/{{$post->media}}" alt="" class="img-responsive post-img img-rounded">
                         <a href="{{$post->media}}" class="bold elegant" download>Download</a>
                         </div>
                     @endif

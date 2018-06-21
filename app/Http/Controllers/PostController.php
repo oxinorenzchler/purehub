@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Image;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Gallery;
-use App\Image;
+use App\Image as Image2;
+use Storage;
 use Carbon\Carbon;
 class PostController extends Controller
 {
@@ -24,7 +26,7 @@ class PostController extends Controller
 
             // echo $gallery_id;
 
-            $imagePath = new Image;
+            $imagePath = new Image2;
         
            
         // Kung my text at formData
@@ -33,14 +35,16 @@ class PostController extends Controller
             $image = $request->file('attachment'); //gets the image from form
 
             // $image_name = time().'.'.$image->getClientOriginalExtension();
+            
             $image_name = $image->getClientOriginalName();
-
+            // $img = Image::make($image->getRealPath());
              // $image_name = $image->getClientOriginalExtension();
             //ex. 12312356.jpg
             $destination = "users/".$id."/";
-
+            // $img->stream();
             // UploadFIle
-            $image->move($destination, $image_name);
+            // $image->move($destination, $image_name);
+            Storage::disk('public')->putFileAs($destination,$image,$image_name);
 
             // Sore Gallery Id To Image Table
             $imagePath->gallery_id = $gallery_id;
