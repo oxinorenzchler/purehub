@@ -5,16 +5,16 @@
 @section('content')
 @auth
 @include('includes.navbar')
-<div class="container mt-70">
+<div class="container-fluid mt-70">
     <div class="row">
         {{-- Left --}}
-        <div class="col-md-3">
-                <div class="panel sticky">
+        <div class="col-md-3 sticky">
+                <div class="panel ">
                     <div class="panel-heading text-center">
                             <a href="">
-                            <img src="{{$profile->profile()}}" class="img-circle img-responsive" alt="{{$profile->name}}">
+                            <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="250">
                             </a>
-                            <button class="btn btn-md btn-primary mt-1"><i class="fas fa-camera-retro"></i> Edit</button>
+                            <button class="btn btn-md btn-primary mt-1"><i class="fas fa-camera-retro"></i> Change</button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -31,7 +31,8 @@
                                 <p class="cool-orange bold">1.4mil</p>
                             </div>
                         </div>
-                        <h3 class="elegant bold">{{$profile->name}}</h3><button class="btn btn-primary btn-sm">Edit</button>
+                        <h3 class="elegant bold">{{$profile->name}}</h3>
+                        <button class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Edit</button>
                         <p>
                             <i class="fas fa-briefcase"></i>
                             @if($profile->work != null)
@@ -60,7 +61,7 @@
                             <i class="far fa-calendar-alt"></i>                         
                             Joined  {{  date("M d Y", strtotime($profile->created_at)) }}
                         </p>
-                        <span id="google_translate_element"></span>
+                        <span id="google_translate_element" class="text-center"></span>
                     </div>
                 </div>
             </div>
@@ -222,7 +223,7 @@
                                         </div>
                                 </div>
                                 <div  class="pull-right mr-1">
-                                    <a href="/post{{$post->id}}">View Post <i class="far fa-eye"></i></a>
+                                    <a href="{{url('/post/'.$post->id)}}">View Post <i class="far fa-eye"></i></a>
                                 </div>
                             </div>
                             {{-- ViewPost --}}
@@ -234,20 +235,26 @@
                     @endforeach
                 </div>
                 @endif
-               
                 {{-- end Middle --}}
             </div>
         {{-- RightMenu --}}
-        <div class="col-md-3 hide-mobile">
+        <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
                     <div class="panel-heading bg-cool-orange elegant bold">Mga Chismosa <a href="">Refresh</a></div>
                         <div class="panel-body">
                                 @foreach($users as $user)
-                                   <div>
-                                   <a href=""><img src="https://www.gravatar.com/avatar/{{$profile->profile().'&s=50'}}" alt="" class="img-circle"></a><span class="margin-1"><button class="btn rounded-outline-btn">Follow</button></span>
-                                        <p>{{$user->name}}</p>
-                                   </div>
-                                    
+                                
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="" class="orange-hover elegant bold"><img src="{{$user->profile_picture}}" class="img-circle" height="50"> {{$user->name}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="btn btn-sm btn-primary">
+                                                Follow <i class="fas fa-user-plus"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                   
                                 @endforeach
                         </div>
                 </div>
@@ -255,7 +262,7 @@
                     <div class="panel-heading bg-cool-orange elegant bold">Getting bored? Checkout this awesome games!</div>
                         <div class="panel-body">
                             <p class="cool-orange bold"><i class="fas fa-gamepad"></i> Featured Games</p>
-                            <a href="https://oxinorenzchler.github.io/TheSweetEscape/" target="_blank" class="w-100" title="The Sweet Escape Mystery Game">
+                            <a href="" class="w-100" title="The Sweet Escape Mystery Game">
                                 <img src="{{asset('img/sweetescape.svg')}}" alt="The Sweet Escape" class="img-rounded w-100 shadow-hover">
                             </a>
                         </div>

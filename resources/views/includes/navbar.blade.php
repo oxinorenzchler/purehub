@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="#" style="height:px;">
+            <a class="navbar-brand" href="{{url('/home')}}">
                     <img alt="Brand" src="{{asset('img/ph.png')}}" style="max-height:100%">
             </a>
         </div>
@@ -39,8 +39,8 @@
                         </div>
                         
                     </form>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/profile">Profile</a></li>
+                <li><a href="{{url('/home')}}">Home</a></li>
+                <li><a href="{{url('/profile')}}">Profile</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

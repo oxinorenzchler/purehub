@@ -12,7 +12,7 @@
                 <div class="panel">
                     <div class="panel-heading text-center">
                             <a href="">
-                                <img src="{{$profile->profile()}}" class="img-circle img-responsive" alt="">
+                            <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="250">
                             </a>
                             <a href="" class="elegant bold size-1">{{$profile->name}}</a>
                     </div>
@@ -47,9 +47,11 @@
                                 </li>
                             </ul>
                         </div>
+                        <span id="google_translate_element" class="text-center"></span>
                     </div>
+                    
                 </div>
-                <span id="google_translate_element"></span>
+                
             </div>
 
         {{-- Middle --}}
@@ -62,7 +64,7 @@
                                 <input type="file" id="attachment" class="attachment" name="attachment">
                             <div class="col-sm-1 text-center" id="user-mini-profile">
                             <div id="profile-post">
-                                <img src="{{$profile->profile()}}" class="img-circle img-responsive" alt="">
+                            <img src="{{$profile->profile()}}" class="img-circle" height="50" alt="{{$profile->name}}">
                             </div>
                             </div>
                             <div class="col-sm-11">
@@ -105,7 +107,7 @@
                 
                 <div class="panel-heading"> 
                         <a href="">
-                            <img src="{{$profile->profile()}}" height="50" class="img-circle" alt="{{$profile->name}}"><span class="ml-1">{{$profile->name}}</span>
+                            <img src="{{$profile->profile()}}" height="50" class="img-circle" alt="{{$profile->name}}"><span class="ml-1">{{$post->user->name}}</span>
                         </a> 
                         <span class="postTime{{$post->id}}'">
                             {{$post->updated_at->diffForHumans()}}
@@ -209,7 +211,7 @@
                                     </div>
                             </div>
                             <div  class="pull-right mr-1">
-                                <a href="/post{{$post->id}}">View Post <i class="far fa-eye"></i></a>
+                            <a href="{{url('/post/'.$post->id)}}">View Post <i class="far fa-eye"></i></a>
                             </div>
                         </div>
                         {{-- ViewPost --}}
@@ -233,7 +235,7 @@
                                 
                                     <ul class="list-inline">
                                         <li>
-                                            <a href=""><img src="{{$user->profile_picture}}" class="img-circle"> <span class="elegant bold"> {{$user->name}}</span></a>
+                                            <a href="" class="elegant bold orange-hover"><img src="{{$user->profile_picture}}" class="img-circle" height="50"> {{$user->name}}</a>
                                         </li>
                                         <li>
                                             <a href="" class="btn btn-sm btn-primary">

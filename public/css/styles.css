@@ -121,6 +121,9 @@ a:hover{
 #content{
     position: relative;
 }
+#content2{
+    position: relative;
+}
 
 #editposttext,
 #cancelpostbtn,
