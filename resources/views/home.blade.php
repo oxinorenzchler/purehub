@@ -122,6 +122,7 @@
                                 <li><a  onclick="showEdit({{$post->id}})"><i class="fas fa-edit"></i> Edit</a></li> 
                                 <li><a onclick="deletePost({{$post->id}})"><i class="fas fa-trash"></i> Delete</a></li> 
                             </ul>
+                            
                             @endif
                         </span> 
                     </div>
