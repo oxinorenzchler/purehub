@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <span id="google_translate_element"></span>
             </div>
 
         {{-- Middle --}}

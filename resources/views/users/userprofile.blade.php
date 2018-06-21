@@ -10,21 +10,11 @@
         {{-- Left --}}
         <div class="col-md-3">
                 <div class="panel sticky">
-                    <div class="panel-heading text-center bg-cool-orange">
+                    <div class="panel-heading text-center">
                             <a href="">
-                                <img src="{{$profile->profile().'&size=200'}}" class="img-circle mb-2" alt="">
+                            <img src="{{$profile->profile()}}" class="img-circle img-responsive" alt="{{$profile->name}}">
                             </a>
-                            <form action="" id="profile-pic-form">
-                                <input type="file" id="profpic" name="profpic">
-                                <div class="form-group">
-                                        <label for="attachment">
-                                                <p id="profile-preview"></p>
-                                        </label>
-                                </div>
-                                <div class="form-group">
-                                        <button type="submit" class="btn btn-sm btn-primary">Change</button>
-                                </div>
-                            </form>
+                            <button class="btn btn-md btn-primary mt-1"><i class="fas fa-camera-retro"></i> Edit</button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -41,7 +31,7 @@
                                 <p class="cool-orange bold">1.4mil</p>
                             </div>
                         </div>
-                        <h3 class="elegant bold">{{$profile->name}}</h3>
+                        <h3 class="elegant bold">{{$profile->name}}</h3><button class="btn btn-primary btn-sm">Edit</button>
                         <p>
                             <i class="fas fa-briefcase"></i>
                             @if($profile->work != null)
@@ -70,31 +60,8 @@
                             <i class="far fa-calendar-alt"></i>                         
                             Joined  {{  date("M d Y", strtotime($profile->created_at)) }}
                         </p>
+                        <span id="google_translate_element"></span>
                     </div>
-                </div>
-                {{-- Partners --}}
-                <div class="panel panel-default">
-                    <div class="panel-heading elegant bold  bg-cool-orange">Visit our partners! Connecting dots</div>
-                        <div class="panel-body text-center">
-                            <div class="form-group">
-                                    <a href="">
-                                        <img src="{{$profile->profile().'&size=60'}}" alt="" class="img-circle"> 
-                                    </a>  
-                                    <a href="" class="cool-orange bold elegant-hover size-1">Pure Room</a>
-                            </div>
-                            <div class="form-group">
-                                    <a href="">
-                                        <img src="{{$profile->profile().'&size=60'}}" alt="" class="img-circle"> 
-                                    </a>  
-                                    <a href="" class="cool-orange bold elegant-hover size-1">Pure Ian</a>
-                            </div>
-                            <div class="form-group">
-                                    <a href="">
-                                        <img src="{{$profile->profile().'&size=60'}}" alt="" class="img-circle"> 
-                                    </a>  
-                                    <a href="" class="cool-orange bold elegant-hover size-1">Pure Taxi</a>
-                            </div>      
-                        </div>
                 </div>
             </div>
 
