@@ -141,6 +141,9 @@
                 </div>
                 @else
                 {{-- Post Section --}}
+                <div class="alert alert-success bold alertpublish text-center" role="alert">Post published!</div>
+                <div class="alert alert-success bold alertdelete text-center" role="alert">Post Deleted!</div>
+                <div class="alert alert-success bold alertedit text-center" role="alert">Post Updated!</div>
                 <div class="postDiv">
                     @foreach($posts as $post)
                     {{-- Start POST --}}

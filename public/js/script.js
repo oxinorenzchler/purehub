@@ -64,6 +64,7 @@ $(document).ready(function(){
             $('.comment-form').on('submit',function(e){
                 e.preventDefault();
             });
+            $('.alertpublish').show().fadeOut(2500);
         });
 
     });
@@ -156,6 +157,7 @@ function editPost(postid){
         $('.post-text'+postid).show();
         $('.editpostbtn'+postid).hide();
         $('.cancelpostbtn'+postid).hide();
+        $('.alertedit').show().fadeOut(2500);
     });
 }
 
@@ -169,6 +171,7 @@ function deletePost(postid){
     }).done(function(data){
         console.log(data);
         $('.post'+postid).remove();
+        $('.alertdelete').show().fadeOut(2500);
     });
    
 }

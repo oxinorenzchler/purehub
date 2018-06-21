@@ -95,6 +95,9 @@
             </div>
             @else
             {{-- Post Section --}}
+            <div class="alert alert-success bold alertpublish text-center" role="alert">Post published!</div>
+            <div class="alert alert-success bold alertdelete text-center" role="alert">Post Deleted!</div>
+            <div class="alert alert-success bold alertedit text-center" role="alert">Post Updated!</div>
             <div class="postDiv">
                 @foreach($posts as $post)
                 {{-- Start POST --}}
@@ -122,7 +125,7 @@
                     </div>
                     <div class="panel-body">
                         
-                            <div class="text-body post-text'+data['post'].+'">
+                            <div class="text-body post-text{{$post->id}}">
                                     {{$post->post_body}}   
                             </div>
                             <textarea name="editposttext{{$post->id}}" id="editposttext" cols="1" rows="3" class="form-control editposttext{{$post->id}}">{{$post->post_body}}</textarea>
