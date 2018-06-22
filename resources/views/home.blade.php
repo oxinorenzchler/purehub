@@ -64,7 +64,7 @@
                                 <input type="file" id="attachment" class="attachment" name="attachment">
                             <div class="col-sm-1 text-center" id="user-mini-profile">
                             <div id="profile-post">
-                            <img src="{{$profile->profile()}}" class="img-circle" height="50" alt="{{$profile->name}}">
+                            <img src="{{$profile->profile()}}" class="img-circle" height="40" alt="{{$profile->name}}">
                             </div>
                             </div>
                             <div class="col-sm-11">
