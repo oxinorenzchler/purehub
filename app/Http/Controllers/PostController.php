@@ -80,8 +80,9 @@ class PostController extends Controller
             $name = $post->user->name;
             $diffForHumans = $post->updated_at->diffForHumans();
 
-
-            $data = compact('post','user','hash','diffForHumans','picture','name' ,'postid');
+            $image = Storage::url($post->media);
+            
+            $data = compact('post','user','hash','diffForHumans','picture','name' ,'postid','image');
             // return compact('post','user','hash','diffForHumans','picture','name' ,'postid');
             return json_encode($data);
         }else{
