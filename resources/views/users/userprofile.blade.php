@@ -149,7 +149,7 @@
     
                         @if($post->media != null)
                             <div class="img-post-container">
-                                <img src="/storage/{{$post->media}}" alt="" class="img-responsive post-img img-rounded">
+                            <img src="/storage/{{$post->media}}" alt="{{$post->media}}" class="img-responsive post-img img-rounded">
                             <a href="{{$post->media}}" class="bold elegant" download>Download</a>
                             </div>
                         @endif
