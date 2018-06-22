@@ -26,5 +26,10 @@ class SearchController extends Controller
         $profile = User::find($id);
         return view('users.userhome',compact('users','profile','posts','comments'));
     }
+
+    public function refreshPeople(){
+        $users = User::whereNotIn('id',array(Auth::id()))->inRandomOrder()->limit(3)->get();
+        return view('includes.refreshpeople',compact('users'));
+    }
     
 }

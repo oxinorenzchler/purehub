@@ -230,22 +230,9 @@
         {{-- RightMenu --}}
         <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading bg-cool-orange elegant bold">Mga Chismosa <a href="">Refresh</a></div>
-                        <div class="panel-body">
-                                @foreach($users as $user)
-                                
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a href="" class="elegant bold orange-hover"><img src="{{$user->profile_picture}}" class="img-circle" height="50"> {{$user->name}}</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="btn btn-sm btn-primary">
-                                                Follow <i class="fas fa-user-plus"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                   
-                                @endforeach
+                    <div class="panel-heading bg-cool-orange elegant bold">Mga Chismosa <a class="refresh">Refresh</a></div>
+                        <div class="people-nearby">
+                            @include('includes.refreshpeople')
                         </div>
                 </div>
                 <div class="panel panel-default">

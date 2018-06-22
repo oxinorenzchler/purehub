@@ -44,4 +44,5 @@ Auth::routes();
         Route::get('/getSearch/{id}', 'SearchController@resultProfile');
         Route::get('/profile','ProfileController@getProfile');
         
+        Route::get('/refresh','SearchController@refreshPeople');
 });

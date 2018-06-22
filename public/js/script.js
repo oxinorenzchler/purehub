@@ -224,6 +224,12 @@ function deleteComment(commentid){
     });
 }  
 
+// refresh people nearby
+$('.refresh').on('click',function(){
+    $('.people-nearby').load('/refresh');
+});
+    
+
 
 
 
