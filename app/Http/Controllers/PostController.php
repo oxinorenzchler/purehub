@@ -79,6 +79,8 @@ class PostController extends Controller
             $postid = $post->id;
             $name = $post->user->name;
             $diffForHumans = $post->updated_at->diffForHumans();
+
+
             $data = compact('post','user','hash','diffForHumans','picture','name' ,'postid');
             // return compact('post','user','hash','diffForHumans','picture','name' ,'postid');
             return json_encode($data);
