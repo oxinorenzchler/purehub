@@ -18,5 +18,6 @@ class ProfileController extends Controller
         $profile = User::find(Auth::id());
         return view('users.userprofile',compact('users','profile','posts','comments'));
     }
+
     
 }

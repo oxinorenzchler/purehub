@@ -41,6 +41,7 @@ Auth::routes();
 
         //Search
         Route::post('/search','SearchController@postSearch');
+        Route::get('/getSearch/{id}', 'SearchController@resultProfile');
         Route::get('/profile','ProfileController@getProfile');
         
 });
