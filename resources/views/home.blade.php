@@ -12,7 +12,7 @@
                 <div class="panel">
                     <div class="panel-heading text-center">
                             <a href="">
-                            <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="250">
+                                <img src="{{$profile->profile()}}" class="img-circle w-100" alt="{{$profile->name}}" height="250">
                             </a>
                             <a href="" class="elegant bold size-1">{{$profile->name}}</a>
                     </div>
@@ -34,13 +34,13 @@
                         <div class="row mt-1">
                             <ul class="list-unstyled ml-3">
                                 <li class="mb-3">
-                                    <i class="far fa-newspaper newspaper"></i><a href="" class="elegant bold side-nav ml-5">My Newsfeeds</a>
+                                    <i class="far fa-newspaper newspaper"></i><a href="{{url('/home')}}" class="elegant bold side-nav ml-5">My Newsfeeds</a>
                                 </li>
                                 <li class="mb-3">
-                                    <i class="fas fa-users people"></i><a href="" class="elegant bold side-nav ml-5">People nearby</a>
+                                    <i class="fas fa-users people"></i><a href="{{url('/people')}}" class="elegant bold side-nav ml-5">People nearby</a>
                                 </li>
                                 <li class="mb-3">
-                                    <i class="fas fa-camera-retro photo"></i><a href="" class="elegant bold side-nav ml-5"> Photos</a>
+                                    <i class="fas fa-camera-retro photo"></i><a href="{{url('/gallery')}}" class="elegant bold side-nav ml-5"> Photos</a>
                                 </li>
                                 <li>
                                     <i class="far fa-eye-slash privacy"></i><a href="" class="elegant bold side-nav ml-5"> Privacy, Terms &amp; Agreement</a>
@@ -64,7 +64,7 @@
                                 <input type="file" id="attachment" class="attachment" name="attachment">
                             <div class="col-sm-1 text-center" id="user-mini-profile">
                             <div id="profile-post">
-                            <img src="{{$profile->profile()}}" class="img-circle" height="40" alt="{{$profile->name}}">
+                                <img src="{{$profile->profile()}}" class="img-circle w-100" height="40" alt="{{$profile->name}}">
                             </div>
                             </div>
                             <div class="col-sm-11">
@@ -106,9 +106,12 @@
             <div class="panel panel-success post{{$post->id}}">
                 
                 <div class="panel-heading"> 
-                        <a href="">
-                            <img src="{{$profile->profile()}}" height="50" class="img-circle" alt="{{$profile->name}}"><span class="ml-1">{{$post->user->name}}</span>
-                        </a> 
+                        
+                                <a href="">
+                                    <img src="{{$profile->profile()}}" class="img-circle" width="40" height="40" alt="{{$profile->name}}"><span class="ml-1">{{$post->user->name}}</span>
+                                </a> 
+                        
+                       
                         <span class="postTime{{$post->id}}'">
                             {{$post->updated_at->diffForHumans()}}
                         </span>
@@ -138,8 +141,7 @@
 
                     @if($post->media != null)
                         <div class="img-post-container">
-                        <img src="{{url('/storage/'.$post->media)}}" alt="" class="img-responsive post-img img-rounded">
-                        <a href="{{$post->media}}" class="bold elegant" download>Download</a>
+                            <img src="{{url('/storage/'.$post->media)}}" alt="" class="img-responsive post-img img-rounded">
                         </div>
                     @endif
                     </div>
@@ -163,7 +165,7 @@
                                 <div class="col-sm-12">
                                 <div class="media comment{{$comment->id}}">
                                     <div class="media-left"><a href="#">
-                                        <img class="media-object img-circle" src="{{$comment->user->profile()}}" alt="" height="30"></a>
+                                        <img class="media-object img-circle" src="{{$comment->user->profile()}}" alt="" height="30" width="30"></a>
                                     </div>
                                     <div class="media-body">
                                         <a href="" class="bold elegant">{{$comment->user->name}}</a>
@@ -176,7 +178,7 @@
                                         <div class="pull-right">
                                             
                                             @if(Auth::id() == $comment->user_id)
-                                                <a onclick="showComment({{$comment->id}})"><i class="fas fa-edit"></i></a>
+                                                <a onclick="showComment({{$comment->id}})" class="mr-1"><i class="fas fa-edit"></i></a>
                                                 <a onclick="deleteComment({{$comment->id}})"><i class="fas fa-trash"></i></a>
                                             @endif
 
@@ -196,7 +198,7 @@
                                 <div class="media">
                                         <div class="media-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="{{$profile->profile_picture}}" alt="..." height="30">
+                                            <img class="media-object img-circle" src="{{$profile->profile_picture}}" alt="{{$profile->name}}" height="30" width="30">
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -230,13 +232,13 @@
         {{-- RightMenu --}}
         <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading bg-cool-orange elegant bold">Mga Chismosa <a class="refresh">Refresh</a></div>
+                    <div class="panel-heading elegant bold">Mga Chismosa <a class="refresh pull-right">Refresh</a></div>
                         <div class="people-nearby">
                             @include('includes.refreshpeople')
                         </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading bg-cool-orange elegant bold">Getting bored? Checkout this awesome games!</div>
+                    <div class="panel-heading elegant bold">Getting bored? Checkout this awesome games!</div>
                         <div class="panel-body">
                             <p class="cool-orange bold"><i class="fas fa-gamepad"></i> Featured Games</p>
                             <a href="" class="w-100" title="The Sweet Escape Mystery Game">

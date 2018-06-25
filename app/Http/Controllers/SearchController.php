@@ -32,4 +32,11 @@ class SearchController extends Controller
         return view('includes.refreshpeople',compact('users'));
     }
     
+    public function getPeople(){
+        $profile = User::find(Auth::id());
+        $postDetails = Post::orderBy('created_at','desct')->where('user_id',Auth::id())->get();
+        $people = User::whereNotIn('id',array(Auth::id()))->inRandomOrder()->get();
+        return view('searches.people', compact('profile', 'postDetails', 'people'));
+    }
+    
 }

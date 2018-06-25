@@ -74,7 +74,7 @@
                                     <input type="file" id="attachment" class="attachment" name="attachment">
                                 <div class="col-sm-1 text-center" id="user-mini-profile">
                                 <div id="profile-post">
-                                    <img src="{{$profile->profile()}}" class="img-circle img-responsive" alt="">
+                                <img src="{{$profile->profile()}}" class="img-circle" height="40" alt="{{$profile->name}}">
                                 </div>
                                 </div>
                                 <div class="col-sm-11">
@@ -117,7 +117,7 @@
                     
                     <div class="panel-heading"> 
                             <a href="">
-                                <img src="{{$profile->profile()}}" height="50" class="img-circle" alt="{{$profile->name}}"><span class="ml-1">{{$profile->name}}</span>
+                                <img src="{{$profile->profile()}}" height="50" class="img-circle" alt="{{$profile->name}}"><span class="ml-1">{{$post->user->name}}</span>
                             </a> 
                             <span class="postTime{{$post->id}}'">
                                 {{$post->updated_at->diffForHumans()}}
@@ -132,12 +132,13 @@
                                     <li><a  onclick="showEdit({{$post->id}})"><i class="fas fa-edit"></i> Edit</a></li> 
                                     <li><a onclick="deletePost({{$post->id}})"><i class="fas fa-trash"></i> Delete</a></li> 
                                 </ul>
+    
                                 @endif
                             </span> 
                         </div>
                         <div class="panel-body">
                             
-                                <div class="text-body post-text'+data['post'].+'">
+                                <div class="text-body post-text{{$post->id}}">
                                         {{$post->post_body}}   
                                 </div>
                                 <textarea name="editposttext{{$post->id}}" id="editposttext" cols="1" rows="3" class="form-control editposttext{{$post->id}}">{{$post->post_body}}</textarea>
@@ -147,8 +148,7 @@
     
                         @if($post->media != null)
                             <div class="img-post-container">
-                            <img src="/storage/{{$post->media}}" alt="{{$post->media}}" class="img-responsive post-img img-rounded">
-                            <a href="{{$post->media}}" class="bold elegant" download>Download</a>
+                                <img src="{{url('/storage/'.$post->media)}}" alt="" class="img-responsive post-img img-rounded">
                             </div>
                         @endif
                         </div>
@@ -185,7 +185,7 @@
                                             <div class="pull-right">
                                                 
                                                 @if(Auth::id() == $comment->user_id)
-                                                    <a onclick="showComment({{$comment->id}})"><i class="fas fa-edit"></i></a>
+                                                    <a onclick="showComment({{$comment->id}})" class="mr-1"><i class="fas fa-edit"></i></a>
                                                     <a onclick="deleteComment({{$comment->id}})"><i class="fas fa-trash"></i></a>
                                                 @endif
     
@@ -221,7 +221,7 @@
                                         </div>
                                 </div>
                                 <div  class="pull-right mr-1">
-                                    <a href="{{url('/post/'.$post->id)}}">View Post <i class="far fa-eye"></i></a>
+                                <a href="{{url('/post/'.$post->id)}}">View Post <i class="far fa-eye"></i></a>
                                 </div>
                             </div>
                             {{-- ViewPost --}}
@@ -233,31 +233,19 @@
                     @endforeach
                 </div>
                 @endif
+               
                 {{-- end Middle --}}
             </div>
-        {{-- RightMenu --}}
-        <div class="col-md-3 hide-mobile sticky hide-tablet">
+        {{-- Right --}}
+       <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading bg-cool-orange elegant bold">Mga Chismosa <a href="">Refresh</a></div>
-                        <div class="panel-body">
-                                @foreach($users as $user)
-                                
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a href="" class="orange-hover elegant bold"><img src="{{$user->profile_picture}}" class="img-circle" height="50"> {{$user->name}}</a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="btn btn-sm btn-primary">
-                                                Follow <i class="fas fa-user-plus"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                   
-                                @endforeach
+                    <div class="panel-heading elegant bold">Mga Chismosa <a class="refresh pull-right">Refresh</a></div>
+                        <div class="people-nearby">
+                            @include('includes.refreshpeople')
                         </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading bg-cool-orange elegant bold">Getting bored? Checkout this awesome games!</div>
+                    <div class="panel-heading elegant bold">Getting bored? Checkout this awesome games!</div>
                         <div class="panel-body">
                             <p class="cool-orange bold"><i class="fas fa-gamepad"></i> Featured Games</p>
                             <a href="" class="w-100" title="The Sweet Escape Mystery Game">
@@ -266,7 +254,7 @@
                         </div>
                 </div>
 
-        </div>
+        </div> 
     </div>
 </div>
 

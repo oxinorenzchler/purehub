@@ -111,6 +111,7 @@ a:hover{
 .mr-1{
     margin-right: 10px;
 }
+
 #profpic{
     display: none;
 }
@@ -188,7 +189,8 @@ a:hover{
     color: white;
 }
 .vh-100{
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
 }
 .alertpublish,
 .alertdelete,
@@ -196,6 +198,13 @@ a:hover{
     display: none;
 }
 
+#footer{
+    background-color:lavender; 
+    padding:10px;
+}
+.primary-dark{
+    background-color: #0d47a1;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .post-media-icon{
@@ -223,6 +232,9 @@ a:hover{
         border-radius: 10px;
         
     }
+    .gallery{
+        width:100%; height:200px; display:inline-block;
+    }
     
     
 } 
@@ -239,6 +251,13 @@ a:hover{
         margin-left: 200px;
         /* text-align: center; */
     }
+    .gallery{
+        width:200px; height:200px; display:inline-block;
+    }
+    .center-responsive{
+        margin-left: 65px;
+    }
+    
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -300,6 +319,12 @@ a:hover{
         margin-right: 10px;
         margin-bottom: 30px;
     }
+    .gallery{
+        width:200px; height:200px; display:inline-block;
+    }
+    .center-responsive{
+        margin-left: 35px;
+    }
     
 } 
 
@@ -308,4 +333,8 @@ a:hover{
     .comment-link{
         display: none;
     }
+    .gallery{
+        width:200px; height:200px; display:inline-block;
+    }
+    
 }

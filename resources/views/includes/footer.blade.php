@@ -1,4 +1,4 @@
-<div class="text-center" style="background-color:lavender; padding:10px;">
+<div class="text-center" id="footer">
         <div class="container">
                         <div class="row">
                                         <div class="col-lg-6 mt-1">

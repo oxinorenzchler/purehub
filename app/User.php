@@ -45,6 +45,9 @@ class User extends Authenticatable
     public function profile(){
         return $this->profile_picture;
     }
+    public function follows(){
+        return $this->belongsTo('App\User','follows')->withTimestamps();
+    }
 
     public function isUser(){
         return $this->role_id == 2;

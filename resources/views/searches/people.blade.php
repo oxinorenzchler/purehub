@@ -56,26 +56,21 @@
 
         {{-- Middle --}}
         <div class="col-md-6">
-                <h1 class="text-center">Your search for "{{Request::input('search')}}"</h1>
-                @if(count($users) == 0)
-                 <h3 class="text-center">No results found</h3>
-                 @else
-                    <p>{{count($users)}} people found</p>  
-                     @foreach($users as $user)
-                        <div class="media">
-                             <a href="{{url('/getSearch/'.$user->id)}}" class="pull-left">
-                                <img class="media-object img-circle" src="{{$user->profile()}}" alt="{{$user->name}}" height="100">
-                             </a>
-                             <div class="media-body">
-                                <h4 class="heading"><a href="{{url('/getSearch/'.$user->id)}}">{{$user->name}}</a></h4>
-                                <p>{{$user->email}}</p>
-                             </div>
+            <h1 class="text-center">People nearby</h1>
+                @foreach($people as $user)
+                <div class="media">
+                        <a href="{{url('/getSearch/'.$user->id)}}" class="pull-left">
+                        <img class="media-object img-circle" src="{{$user->profile()}}" alt="{{$user->name}}" height="100">
+                        </a>
+                        <div class="media-body">
+                        <h4 class="heading"><a href="{{url('/getSearch/'.$user->id)}}">{{$user->name}}</a></h4>
+                        <p>{{$user->email}}</p>
                         </div>
-                     @endforeach
-                 @endif
+                </div>
+                @endforeach
         </div>
         {{-- RightMenu --}}
-        <div class="col-md-3 hide-mobile sticky hide-tablet">
+        <div class="col-md-3 hide-mobile sticky">
                 <div class="panel panel-default">
                     <div class="panel-heading elegant bold">Getting bored? Checkout this awesome games!</div>
                         <div class="panel-body">

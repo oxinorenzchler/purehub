@@ -23,6 +23,7 @@ Auth::routes();
 
         // Home
         Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/gallery','ImageController@getGallery');
 
         // Post
         Route::post('/publish', 'PostController@postPublish');
@@ -42,7 +43,11 @@ Auth::routes();
         //Search
         Route::post('/search','SearchController@postSearch');
         Route::get('/getSearch/{id}', 'SearchController@resultProfile');
+        Route::get('/people', 'SearchController@getPeople');
+
+        //Profile
         Route::get('/profile','ProfileController@getProfile');
-        
+        Route::post('/editProfilePicture', 'ProfileController@changeProfile');
+
         Route::get('/refresh','SearchController@refreshPeople');
 });
