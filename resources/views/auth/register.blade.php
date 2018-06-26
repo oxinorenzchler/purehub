@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container vh-100  mt-70">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <div class="row mb-3">
-                        <div class="col-md-6 col-md-offset-3 tex-center">
+                        <div class="col-md-4 col-md-offset-4">
                             <img src="{{ asset('img/logo.svg') }}" alt="" class="img-responsive">
                         </div>
                     </div>
@@ -109,6 +109,9 @@
                         <li><a href="">Pure/TuittDay8</a></li>
                         <li><a href="">Pure Taxi</a></li>
                     </ul>
+                    <div>
+                        <p>Already have an account? <a href="{{url('/login')}}"> Login here</a></p>
+                    </div>
                 </div>
             </div>
         </div>

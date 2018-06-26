@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Image;
+use App\Image;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Gallery;
-use App\Image as Image2;
 use Storage;
 use Carbon\Carbon;
 class PostController extends Controller
@@ -26,7 +25,7 @@ class PostController extends Controller
 
             // echo $gallery_id;
 
-            $imagePath = new Image2;
+            $imagePath = new Image;
         
            
         // Kung my text at formData
@@ -38,18 +37,18 @@ class PostController extends Controller
             
             $image_name = $image->getClientOriginalName();
             // $img = Image::make($image->getRealPath());
-             // $image_name = $image->getClientOriginalExtension();
+            //  $image_name = $image->getClientOriginalExtension();
             //ex. 12312356.jpg
             $destination = "users/".$id."/";
             // $img->stream();
             // UploadFIle
-            // $image->move($destination, $image_name);
-            Storage::disk('public')->putFileAs($destination,$image,$image_name);
+            $image->move($destination, $image_name);
+            // Storage::disk('public')->putFileAs($destination,$image,$image_name);
 
             // Sore Gallery Id To Image Table
             $imagePath->gallery_id = $gallery_id;
             // Store path to Image Table
-            $imagePath->path = $destination.$image_name;
+            $imagePath->path = $image_name;
             
             $imagePath->save();
 
@@ -65,7 +64,7 @@ class PostController extends Controller
         $destination = "users/".$id."/";
 
         if($request->img != null){
-            $post->media = $destination.$request->img;
+            $post->media = $request->img;
         }
         $post->post_body = $request->text;
         
@@ -79,10 +78,11 @@ class PostController extends Controller
             $postid = $post->id;
             $name = $post->user->name;
             $diffForHumans = $post->updated_at->diffForHumans();
-
-            $image = Storage::url($post->media);
-            
-            $data = compact('post','user','hash','diffForHumans','picture','name' ,'postid','image');
+            $path = $post->user->profilePath();
+            $defaultProfile = $post->user->defaultProfile();
+            $image = $post->media;
+            $post_text = $post->post_body;
+            $data = compact('post','user','hash','diffForHumans','picture','name' ,'postid','image','path','post_text','defaultProfile');
             // return compact('post','user','hash','diffForHumans','picture','name' ,'postid');
             return json_encode($data);
         }else{

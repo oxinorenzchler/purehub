@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Image;
 use App\Gallery;
-use Storage;
 use App\Post;
 use App\Comment;
 use Auth;
@@ -48,25 +47,27 @@ class ProfileController extends Controller
         $destination = "users/".$id."/";
         // $img->stream();
         // UploadFIle
-        // $image->move($destination, $image_name);
-        Storage::disk('public')->putFileAs($destination,$image,$image_name);
+        $image->move($destination, $image_name);
+        // Storage::disk('public')->putFileAs($destination,$image,$image_name);
 
         // Sore Gallery Id To Image Table
         $imagePath->gallery_id = $gallery_id;
         // Store path to Image Table
-        $imagePath->path = $destination.$image_name;
+        $imagePath->path = $image_name;
         
         $imagePath->save();
 
         $changePP = User::find($id);
 
-        $path =  Storage::url($destination.$image_name);
+        $profilePath = $changePP->profilePath();
+
+        $path =  $image_name;
 
         $changePP->profile_picture = $path;
 
         $changePP->save();
 
-        $data = compact('path');
+        $data = compact('path','profilePath');
 
         return json_encode($data);
 

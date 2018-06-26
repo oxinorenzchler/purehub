@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container vh-100">
+<div class="container vh-100 mt-70">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 col-md-offset-4">
+                            <img src="{{ asset('img/logo.svg') }}" alt="Pure Hub" class="img-responsive">
+                        </div>
+                    </div>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -61,6 +66,9 @@
                             </div>
                         </div>
                     </form>
+                    <div>
+                        <p>Don't have an account? <a href="{{url('/register')}}"> Register here</a></p>
+                    </div>
                 </div>
             </div>
         </div>

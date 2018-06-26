@@ -5,21 +5,25 @@
 @section('content')
 @auth
 @include('includes.navbar')
-<div class="container-fluid mt-70">
+<div class="container-fluid mt-70 vh-100">
     <div class="row" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky">
             <div class="panel">
                 <div class="panel-heading text-center">
                         <a href="">
-                        <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="250">
+                            @if($profile->profile() == null)
+                                <img src="{{url($profile->defaultProfile())}}" alt="{{$profile->name}}" class="img-circle" height="200" width="200">
+                            @else
+                                <img src="{{url($profile->profilePath().$profile->profile())}}" alt="{{$profile->name}}" class="img-circle" height="200" width="200">
+                            @endif
                         </a>
                         <a href="" class="elegant bold size-1">{{$profile->name}}</a>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            <a href="" class="elegant bold orange-hover">Chinismis</a>
+                            <a href="" class="elegant bold orange-hover">Posts</a>
                         <p class="cool-orange bold">{{count($postDetails)}}</p>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -34,13 +38,13 @@
                     <div class="row mt-1">
                         <ul class="list-unstyled ml-3">
                             <li class="mb-3">
-                                <i class="far fa-newspaper newspaper"></i><a href="" class="elegant bold side-nav ml-5">My Newsfeeds</a>
+                                <i class="far fa-newspaper newspaper"></i><a href="/home" class="elegant bold side-nav ml-5">News feeds</a>
                             </li>
                             <li class="mb-3">
-                                <i class="fas fa-users people"></i><a href="" class="elegant bold side-nav ml-5">People nearby</a>
+                                <i class="fas fa-users people"></i><a href="/people" class="elegant bold side-nav ml-5">People nearby</a>
                             </li>
                             <li class="mb-3">
-                                <i class="fas fa-camera-retro photo"></i><a href="" class="elegant bold side-nav ml-5"> Photos</a>
+                                <i class="fas fa-camera-retro photo"></i><a href="/gallery" class="elegant bold side-nav ml-5"> Photos</a>
                             </li>
                             <li>
                                 <i class="far fa-eye-slash privacy"></i><a href="" class="elegant bold side-nav ml-5"> Privacy, Terms &amp; Agreement</a>
@@ -64,7 +68,11 @@
                      @foreach($users as $user)
                         <div class="media">
                              <a href="{{url('/getSearch/'.$user->id)}}" class="pull-left">
-                                <img class="media-object img-circle" src="{{$user->profile()}}" alt="{{$user->name}}" height="100">
+                                @if($user->profile() == null)
+                                    <img class="media-object img-circle" src="{{url($user->defaultProfile())}}" alt="{{$user->name}}" height="50" width="50">
+                                @else
+                                <img class="media-object img-circle" src="{{url($user->profilePath().$user->profile())}}" alt="{{$user->name}}" height="50" width="50">
+                                @endif
                              </a>
                              <div class="media-body">
                                 <h4 class="heading"><a href="{{url('/getSearch/'.$user->id)}}">{{$user->name}}</a></h4>

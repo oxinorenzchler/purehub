@@ -24,9 +24,11 @@ class CommentController extends Controller
         $comments->post_id = $request->postid;
         $comments->comment = $comment;
         $comments->save();
+        $path = $comments->user->profilePath();
+        $defaultProfile = $comments->user->defaultProfile();
         $commentid = $comments->id;
         $name = $comments->user->name;
-        return compact('user','comment','commentid','name');
+        return compact('user','comment','commentid','name','path','defaultProfile');
 
     }
 

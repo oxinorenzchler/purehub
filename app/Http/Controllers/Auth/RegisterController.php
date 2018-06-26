@@ -70,8 +70,6 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => bcrypt($data['password']),
             'birthdate' => $data['birthdate'],
-            'profile_picture' => 'https://www.gravatar.com/avatar/'.md5($data['name']).'?d=mp',
-            
         ]);
     }
 }

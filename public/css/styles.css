@@ -99,12 +99,12 @@ a:hover{
 .shadow-hover:hover{
     box-shadow: #14171A 0px 0px 10px 2px;
 }
-.fas{
-}
 .mt-70{
     margin-top:70px;
 }
-
+.mt-5{
+    margin-top:50px;
+}
 .mb-2{
     margin-bottom: 10px;
 }
@@ -194,7 +194,8 @@ a:hover{
 }
 .alertpublish,
 .alertdelete,
-.alertedit{
+.alertedit,
+.alertPP{
     display: none;
 }
 
@@ -233,9 +234,12 @@ a:hover{
         
     }
     .gallery{
-        width:100%; height:200px; display:inline-block;
+        width:100%; height: 200; display:inline-block;
     }
-    
+    .gallery-image{
+        width: 100%;
+        height: 100%;
+    }
     
 } 
 
@@ -257,6 +261,10 @@ a:hover{
     .center-responsive{
         margin-left: 65px;
     }
+    .gallery-image{
+        width: 100%;
+        height: 100%;
+    }
     
 } 
 
@@ -270,6 +278,10 @@ a:hover{
     }
     #text-area-post{
         width: 100%;
+    }
+    .gallery-image{
+        width: 100%;
+        height: 100%;
     }
   
     
@@ -320,10 +332,14 @@ a:hover{
         margin-bottom: 30px;
     }
     .gallery{
-        width:200px; height:200px; display:inline-block;
+        width:150px; height:150px; display:inline-block;
     }
     .center-responsive{
         margin-left: 35px;
+    }
+    .gallery-image{
+        width: 100%;
+        height: 100%;
     }
     
 } 
@@ -334,7 +350,11 @@ a:hover{
         display: none;
     }
     .gallery{
-        width:200px; height:200px; display:inline-block;
+        width:150px; height:150px; display:inline-block;
+    }
+    .gallery-image{
+        width: 100%;
+        height: 100%;
     }
     
 }

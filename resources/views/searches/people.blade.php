@@ -5,21 +5,21 @@
 @section('content')
 @auth
 @include('includes.navbar')
-<div class="container-fluid mt-70">
+<div class="container-fluid mt-70 vh-100">
     <div class="row" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky">
             <div class="panel">
                 <div class="panel-heading text-center">
                         <a href="">
-                        <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="250">
+                        <img src="{{$profile->profile()}}" class="img-circle" alt="{{$profile->name}}" height="200" width="200">
                         </a>
                         <a href="" class="elegant bold size-1">{{$profile->name}}</a>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            <a href="" class="elegant bold orange-hover">Chinismis</a>
+                            <a href="" class="elegant bold orange-hover">Posts</a>
                         <p class="cool-orange bold">{{count($postDetails)}}</p>
                         </div>
                         <div class="col-md-4 col-sm-4">

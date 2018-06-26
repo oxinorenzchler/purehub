@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email','mobile', 'password','birthdate','profile_picture'
+        'name', 'email','mobile', 'password','birthdate'
     ];
 
     /**
@@ -41,9 +41,14 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany('App\Comment');
     }
-
+    public function profilePath(){
+        return '/users/'.$this->id.'/';
+    }
     public function profile(){
-        return $this->profile_picture;
+        return  $this->profile_picture;
+    }
+    public function defaultProfile(){
+        return 'https://www.gravatar.com/avatar/?d=mp';
     }
     public function follows(){
         return $this->belongsTo('App\User','follows')->withTimestamps();

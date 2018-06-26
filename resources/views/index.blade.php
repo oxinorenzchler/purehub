@@ -3,10 +3,9 @@
 @section('title','Pure Hub')
 
 @section('content')
-
     <div class="landing-container container-fluid">
         <div class="row">
-            <div class="col-lg-6 white-text flexbox-container-left">
+            <div class="col-md-6 white-text flexbox-container-left">
                 <h1 class="bold text-center">Be <span class="f-2">Awesome</span>. Join the <span class="f-2">Hub!</span></h1>
                 <ul class="list-unstyled list-center">
                     <li>
@@ -23,7 +22,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-6 h-100">
+            <div class="col-md-6 h-100">
                     @if (Route::has('login'))
                     <div class="text-center flexbox-container overlay">
                         <div id="logo-landing-container">
@@ -46,8 +45,6 @@
                             <a href="" class=" white-hover"> Privacy Terms &amp; Condition</a>    
                         </div>     
                         
-
-
                         @endauth
                     </div>
                     @endif
