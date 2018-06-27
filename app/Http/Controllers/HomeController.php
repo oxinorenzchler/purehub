@@ -28,7 +28,6 @@ class HomeController extends Controller
     {
         // dd(Auth::user()->comments()->first());
         // dd(Auth::user()->likes->contains(78));
-        
         $id = Auth::id();
         $posts = Post::orderBy('created_at','desc')->get();
         $postDetails = Post::orderBy('created_at','desc')->where('user_id',Auth::id())->get();
