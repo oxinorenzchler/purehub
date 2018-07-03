@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title',$profile->name.' | Home')
+@section('title','Search results')
 
 @section('content')
 @auth
 @include('includes.navbar')
 <div class="container-fluid mt-70 vh-100">
-    <div class="row" id="content">
+    <div class="row limit" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky">
             <div class="panel">
@@ -28,11 +28,11 @@
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <a href="" class="elegant bold orange-hover">Following</a>
-                            <p class="cool-orange bold">5</p>
+                            <p class="cool-orange bold">Not Available</p>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <a href="" class="elegant bold orange-hover">Followers</a>
-                            <p class="cool-orange bold">3.4mil</p>
+                            <p class="cool-orange bold">Not Available</p>
                         </div>
                     </div>
                     <div class="row mt-1">

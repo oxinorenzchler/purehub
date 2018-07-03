@@ -7,6 +7,20 @@
 body{
     background-color: #E6ECF0;
 }
+
+.comment-wrap{
+    border-radius: 10px;
+    background-color: lavender;
+    padding: 5px;
+}
+.limit{
+    word-break: break-all;
+     word-break: break-word;
+
+    -moz-hyphens: auto;
+     -ms-hyphens: auto;
+         hyphens: auto;
+}
 .landing-container{
   
     background: 
@@ -155,6 +169,9 @@ a:hover{
 .side-nav:hover{
     text-decoration: underline;
     color: #FF6B2A;
+}
+.shadow-1{
+    text-shadow: 5px 1px 5px black;
 }
 .ml-1{
     margin-left: 10px;
@@ -355,6 +372,10 @@ a:hover{
     .gallery-image{
         width: 100%;
         height: 100%;
+    }
+    .sticky{
+        position: sticky;
+        top: 70px;
     }
     
 }

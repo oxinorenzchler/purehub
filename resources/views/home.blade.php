@@ -6,7 +6,7 @@
 @auth
 @include('includes.navbar')
 <div class="container-fluid mt-70 vh-100">
-    <div class="row" id="content">
+    <div class="row limit vh-100" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky">
                <div class="panel">
@@ -28,11 +28,13 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <a class="elegant bold orange-hover">Following</a>
-                                <p class="cool-orange bold">5</p>
+                                <p class="cool-orange bold">
+                                   Not available
+                                </p>
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <a class="elegant bold orange-hover">Followers</a>
-                                <p class="cool-orange bold">3.4mil</p>
+                                <p class="cool-orange bold">Not available</p>
                             </div>
                         </div>
                         <div class="row mt-1">
@@ -47,7 +49,7 @@
                                     <i class="fas fa-camera-retro photo"></i><a href="{{url('/gallery')}}" class="elegant bold side-nav ml-5"> Photos</a>
                                 </li>
                                 <li>
-                                    <i class="far fa-eye-slash privacy"></i><a href="" class="elegant bold side-nav ml-5"> Privacy, Terms &amp; Agreement</a>
+                                <i class="far fa-eye-slash privacy"></i><a href="{{url('https://termsfeed.com/terms-conditions/e46a108c7a46182ca7101cdba76ea9c9')}}" class="elegant bold side-nav ml-5" target="_blank"> Privacy, Terms &amp; Agreement</a>
                                 </li>
                             </ul>
                         </div>
@@ -56,7 +58,7 @@
                     
                 </div> 
                 
-            </div>
+        </div>
 
         {{-- Middle --}}
         <div class="col-md-6">
@@ -102,9 +104,9 @@
             </div>
            
             @if(count($posts)<1)
-            <h1 class="text-center">Ang lungkot ng buhay mo te!</h1>
+            
             <div class="postDiv">
-
+                <h1 class="text-center">No post to show</h1>
             </div>
             @else
             {{-- Post Section --}}
@@ -165,10 +167,14 @@
                     {{-- Check if user has already liked the post --}}
                     @if(Auth::user()->likes->contains($post->id))
                         {{-- if user has already liked, unlike button will show --}}
-                        <a class="postClass{{$post->id}}" onclick="unlike({{Auth::id()}},{{$post->id}})">Unlike <i class="fas fa-heart"></i></a>
+                <a class="postClass{{$post->id}}" onclick="unlike({{Auth::id()}},{{$post->id}})">Unlike <i class="fas fa-heart"></i></a><span>
+                   
+                </span>
                     @else
                         {{-- if user is wala pa nag like, like button will show --}}
-                        <a class="postClass{{$post->id}}" onclick="like({{Auth::id()}},{{$post->id}})">Like <i class="far fa-heart"></i></a>
+                        <a class="postClass{{$post->id}}" onclick="like({{Auth::id()}},{{$post->id}})">Like <i class="far fa-heart"></i></a><span>
+                         
+                        </span>
                     @endif
 
 
@@ -191,8 +197,10 @@
                                     <div class="media-body">
                                         <a href="" class="bold elegant">{{$comment->user->name}}</a>
                                     <div class="text-body commenttext{{$comment->id}}">
-                                            <p>{{$comment->comment}}</p>
+                                        <div class="limit">
+                                            <p class="comment-wrap">{{$comment->comment}}</p>
                                         </div>
+                                    </div>
                                             <textarea name="editcommenttext{{$comment->id}}" id="editcommenttext" cols="1" rows="3" class="form-control editcommenttext{{$comment->id}}">{{$comment->comment}}</textarea>
                                             <button onclick="editComment({{$comment->id}})" class="btn btn-sm btn-primary editcommentbtn{{$comment->id}}" id="editcommentbtn">Save <i class="fas fa-save"></i></button>
                                             <button onclick="cancelEditComment({{$comment->id}})" id="cancelcommentbtn" class="btn btn-sm btn-secondary cancelcommentbtn{{$comment->id}}">Cancel <i class="fas fa-ban"></i></button>
@@ -257,7 +265,7 @@
         {{-- RightMenu --}}
         <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading elegant bold">Mga Chismosa <a class="refresh pull-right">Refresh</a></div>
+                    <div class="panel-heading elegant bold">Who to follow<a class="refresh pull-right">Refresh</a></div>
                         <div class="people-nearby">
                             @include('includes.refreshpeople')
                         </div>

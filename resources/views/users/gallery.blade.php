@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title',$profile->name.' | Gallery')
 
 @section('content')
 @auth
 @include('includes.navbar')
 <div class="container-fluid mt-70 vh-100">
-    <div class="row vh-100" id="content">
+    <div class="row vh-100 limit" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
@@ -29,11 +29,11 @@
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                     <a href="" class="elegant bold orange-hover">Following</a>
-                                    <p class="cool-orange bold">5</p>
+                                    <p class="cool-orange bold">Not Available</p>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                     <a href="" class="elegant bold orange-hover">Followers</a>
-                                    <p class="cool-orange bold">3.4mil</p>
+                                    <p class="cool-orange bold">Not Available</p>
                                 </div>
                             </div>
                             <div class="row mt-1">

@@ -12,7 +12,7 @@
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('errors.maintenance');
 // });
 Route::get('/',function(){
     return view('index');
@@ -29,7 +29,7 @@ Auth::routes();
         Route::post('/publish', 'PostController@postPublish');
         Route::post('/publishPost', 'PostController@publishPost');
         Route::post('/deletePost','PostController@deletePost');
-        Route::patch('/editPost','PostController@editPost');
+        Route::post('/editPost','PostController@editPost');
 
         // Like
         Route::post('/like', 'LikeController@postLike');
@@ -37,8 +37,8 @@ Auth::routes();
 
         // Comment
         Route::post('/comment','CommentController@postComment');
-        Route::delete('/deleteComment', 'CommentController@deleteComment');
-        Route::patch('/editComment','CommentController@editComment');
+        Route::post('/deleteComment', 'CommentController@deleteComment');
+        Route::post('/editComment','CommentController@editComment');
 
         //Search
         Route::post('/search','SearchController@postSearch');
@@ -48,6 +48,6 @@ Auth::routes();
         //Profile
         Route::get('/profile','ProfileController@getProfile');
         Route::post('/editProfilePicture', 'ProfileController@changeProfile');
-
+        Route::post('/editProfile','ProfileController@editProfile');
         Route::get('/refresh','SearchController@refreshPeople');
 });

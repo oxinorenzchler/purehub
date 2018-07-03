@@ -56,7 +56,7 @@ $(document).ready(function(){
 
            data = JSON.parse(data);
 
-            var post = '<div class="panel panel-success post'+data.post.id+'"><div class="panel-heading"> <a href=""><img src="'+ data.path + data.user.profile_picture + '" height="50" width="50" class="img-circle" alt=""><span class="ml-1">'+ data.name +'</span></a> <span class="postTime'+data.post.id+'">'+ data.diffForHumans +'</span> <span class="dropdown text-right"> <button class="btn btn-default btn-sm dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <span class="fas fa-cogs"></span> </button> <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> <li><a  onclick="showEdit('+data.post.id+')"><i class="fas fa-edit"></i> Edit</a></li> <li><a onclick="deletePost('+data.post.id+')"><i class="fas fa-trash"></i> Delete</a></li> </ul> </span> </div> <div class="panel-body"> <div class="text-body post-text'+data.post.id+'">'+ ( data.post.post_body != null ? '<p>'+ data.post.post_body+'</p>' : ' ') +'</div> <textarea name="editposttext'+ data.post.id +'" id="editposttext" cols="1" rows="3" class="form-control editposttext'+ data.post.id +'">'+ data.post.post_body +'</textarea> <button onclick="editPost('+ data.post.id +')" class="btn btn-sm btn-primary editpostbtn'+ data.post.id +'" id="editpostbtn">Save <i class="fas fa-save"></i></button> <button onclick="cancelEditPost('+ data.post.id +')" id="cancelpostbtn" class="btn btn-sm btn-secondary cancelpostbtn'+ data.post.id +'">Cancel <i class="fas fa-ban"></i></button> '+ (data.image != null ? '<div class="img-post-container"> <img src="'+ data.path + data.image +'" alt="'+ data.image +'" class="img-responsive post-img img-rounded"></div>' : ' ' ) +'</div> <div class="panel-footer"> <a class="postClass'+data.post.id+'" onclick="like('+data.user.id+','+data.post.id+')">Like <i class="far fa-heart"></i></a> <div class="commentDiv'+ data.post.id +'"> </div> <div class="row"> <div class="col-sm-1"></div> <div class="col-sm-11"> <div class="media"> <div class="media-left"> <a href="#"> <img class="media-object img-circle" src="'+ (data.picture == null ? data.defaultProfile : data.path + data.picture) +'" alt="'+data.name+'" height="30"> </a> </div> <div class="media-body"> <form action="" class="comment-form"> <div class="form-group"> <textarea name="comment-body" class="comment-body'+data.post.id+' form-control ta5" cols="65" rows="3" placeholder="Anong say mo?"></textarea> </div> <div class="form-group"> <button id="btn-comment" class="btn btn-primary btn-sm" onclick="comment('+data.post.id+')">Comment</button> </div> </form> </div> </div> </div> </div> </div> </div>';
+            var post = '<div class="panel panel-success post'+data.post.id+'"><div class="panel-heading"> <a href=""><img src="'+ data.path + data.user.profile_picture + '" height="50" width="50" class="img-circle" alt=""><span class="ml-1">'+ data.name +'</span></a> <span class="postTime'+data.post.id+'">'+ data.diffForHumans +'</span> <span class="dropdown text-right"> <button class="btn btn-default btn-sm dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <span class="fas fa-cogs"></span> </button> <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> <li><a  onclick="showEdit('+data.post.id+')"><i class="fas fa-edit"></i> Edit</a></li> <li><a onclick="deletePost('+data.post.id+')"><i class="fas fa-trash"></i> Delete</a></li> </ul> </span> </div> <div class="panel-body"> <div class="text-body post-text'+data.post.id+'">'+ ( data.post.post_body != null ? '<p>'+ data.post.post_body+'</p>' : ' ') +'</div> <textarea name="editposttext'+ data.post.id +'" id="editposttext" cols="1" rows="3" class="form-control editposttext'+ data.post.id +'">'+ data.post.post_body +'</textarea> <button onclick="editPost('+ data.post.id +')" class="btn btn-sm btn-primary editpostbtn'+ data.post.id +'" id="editpostbtn">Save <i class="fas fa-save"></i></button> <button onclick="cancelEditPost('+ data.post.id +')" id="cancelpostbtn" class="btn btn-sm btn-secondary cancelpostbtn'+ data.post.id +'">Cancel <i class="fas fa-ban"></i></button> '+ (data.image != null ? '<div class="img-post-container"> <img src="'+(data.path + data.image)+'" alt="'+ data.image +'" class="img-responsive post-img img-rounded"></div>' : ' ' ) +'</div> <div class="panel-footer"> <a class="postClass'+data.post.id+'" onclick="like('+data.user.id+','+data.post.id+')">Like <i class="far fa-heart"></i></a> <div class="commentDiv'+ data.post.id +'"> </div> <div class="row"> <div class="col-sm-1"></div> <div class="col-sm-11"> <div class="media"> <div class="media-left"> <a href="#"> <img class="media-object img-circle" src="'+ (data.picture == null ? data.defaultProfile : data.path + data.picture) +'" alt="'+data.name+'" height="30"> </a> </div> <div class="media-body"> <form action="" class="comment-form"> <div class="form-group"> <textarea name="comment-body" class="comment-body'+data.post.id+' form-control ta5" cols="65" rows="3" placeholder="Anong say mo?"></textarea> </div> <div class="form-group"> <button id="btn-comment" class="btn btn-primary btn-sm" onclick="comment('+data.post.id+')">Comment</button> </div> </form> </div> </div> </div> </div> </div> </div>';
             console.log(data.image);
             $('.postDiv').prepend(post);
             $('#post').val("");
@@ -103,6 +103,12 @@ $(document).ready(function(){
         });
 
     });
+
+    $('.postDiv').is(':empty',function(){
+        console.log('daslkdjas');
+    });
+       
+    
 
 });//End $(document).ready()
 
@@ -174,7 +180,7 @@ function editPost(postid){
     $.ajax({
         url:'/editPost',
         data:{'post':post,'postid':postid},
-        method:"PATCH"
+        method:"POST"
     }).done(function(data){
         // console.log(data);
         $('.post-text'+postid).html(data.text);
@@ -224,7 +230,7 @@ function editComment(commentid){
     $.ajax({
         url:'/editComment',
         data:{'comment':comment,'commentid':commentid},
-        method:'PATCH'
+        method:'POST'
     }).done(function(data){
         console.log(data);
         $('.commenttext'+commentid).html(data.text);
@@ -242,7 +248,7 @@ function deleteComment(commentid){
     $.ajax({
         url:'/deleteComment',
         data:{'commentid':commentid},
-        method:'DELETE'
+        method:'POST'
     }).done(function(data){
         console.log(data);
         $('.comment'+commentid).remove();
@@ -254,6 +260,10 @@ $('.refresh').on('click',function(){
     $('.people-nearby').load('/refresh');
 });
     
+// Edit Profile
+$('#save-profile-btn').on('click',function(){
+    console.log('hello');
+});
 
 
 

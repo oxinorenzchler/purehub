@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title',$profile->name.' | Home')
+@section('title',$profile->name.' | Profile')
 
 @section('content')
 @auth
 @include('includes.navbar')
 <div class="container-fluid mt-70 vh-100">
-    <div class="row" id="content">
+    <div class="row limit" id="content">
         {{-- Left --}}
         <div class="col-md-3 hide-mobile sticky">
-            <div class="panel ">
+            <div class="panel">
                     <div class="panel-heading text-center">
                             <a href="">
                                     <div class="alert alert-success bold alertPP text-center" role="alert">Profile changed!</div>
@@ -38,15 +38,16 @@
                             </div>
                             <div class="col-md-4">
                                 <a href="" class="elegant bold orange-hover">Following</a>
-                                <p class="cool-orange bold">5</p>
+                                <p class="cool-orange bold">Not available</p>
                             </div>
                             <div class="col-md-4">
                                 <a href="" class="elegant bold orange-hover">Followers</a>
-                                <p class="cool-orange bold">1.4mil</p>
+                                <p class="cool-orange bold">Not available</p>
                             </div>
                         </div>
                         <h3 class="elegant bold">{{$profile->name}}</h3>
-                        <button class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Edit</button>
+                        <button class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#editprofile"><i class="far fa-edit"></i></button>
+                        
                         <p>
                             <i class="fas fa-briefcase"></i>
                             @if($profile->work != null)
@@ -123,7 +124,6 @@
                 </div>
                
                 @if(count($posts)<1)
-                <h1 class="text-center">Ang lungkot ng buhay mo te!</h1>
                 <div class="postDiv">
     
                 </div>
@@ -205,28 +205,27 @@
                                             @endif
                                              </a>
                                         </div>
+                                        {{-- Comment Body --}}
                                         <div class="media-body">
                                             <a href="" class="bold elegant">{{$comment->user->name}}</a>
                                         <div class="text-body commenttext{{$comment->id}}">
-                                                <p>{{$comment->comment}}</p>
+                                                <div class="limit">
+                                                    <p class="comment-wrap">{{$comment->comment}}</p>
+                                                </div>
                                             </div>
                                                 <textarea name="editcommenttext{{$comment->id}}" id="editcommenttext" cols="1" rows="3" class="form-control editcommenttext{{$comment->id}}">{{$comment->comment}}</textarea>
                                                 <button onclick="editComment({{$comment->id}})" class="btn btn-sm btn-primary editcommentbtn{{$comment->id}}" id="editcommentbtn">Save <i class="fas fa-save"></i></button>
                                                 <button onclick="cancelEditComment({{$comment->id}})" id="cancelcommentbtn" class="btn btn-sm btn-secondary cancelcommentbtn{{$comment->id}}">Cancel <i class="fas fa-ban"></i></button>
                                             <div class="pull-right">
-                                                
                                                 @if(Auth::id() == $comment->user_id)
                                                     <a onclick="showComment({{$comment->id}})" class="mr-1"><i class="fas fa-edit"></i></a>
                                                     <a onclick="deleteComment({{$comment->id}})"><i class="fas fa-trash"></i></a>
                                                 @endif
-    
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 </div>
-    
-                                       
                                     @endforeach
                             {{-- Comment Form --}}
                         </div>
@@ -274,7 +273,7 @@
         {{-- RightMenu --}}
         <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading elegant bold">Mga Chismosa <a class="refresh pull-right">Refresh</a></div>
+                    <div class="panel-heading elegant bold">Who to follow <a class="refresh pull-right">Refresh</a></div>
                         <div class="people-nearby">
                             @include('includes.refreshpeople')
                         </div>
@@ -292,6 +291,45 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+<div id="editprofile" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit profile</h4>
+            </div>
+            <div class="modal-body">
+            <form action="/editProfile" method="POST">
+                   {{@csrf_field()}}
+                    <div class="form-group">
+                            <label for="">Name</label>
+                    <input type="text" class="form-control w-100" name="name" id="name" value="{{$profile->name}}">
+                        </div>
+                      <div class="form-group">
+                          <label for="">Work</label>
+                      <input type="text" class="form-control w-100" name="work" id="work" value="{{$profile->work}}">
+                      </div>
+                      <div class="form-group">
+                            <label for="">Address</label>
+                      <input type="text" class="form-control w-100" name="address" id="address" value="{{$profile->address}}">
+                        </div>
+                        <div class="form-group">
+                                <label for="">About</label>
+                        <textarea name="about" id="about" cols="30" rows="10" class="form-control">{{$profile->bio}}</textarea>
+                        </div>
+                        <button type="submit" id="save-profile-btn" class="btn btn-primary">Save</button>
+                    </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+            
+          </div>
+      
+        </div>
+      </div>
 @endauth
 @endsection

@@ -73,4 +73,19 @@ class ProfileController extends Controller
 
         }
     }
+
+    public function editProfile(Request $request){
+        
+        $edit = User::find(Auth::id());
+
+        $edit->name = $request->name;
+        $edit->work = $request->work;
+        $edit->address = $request->address;
+        $edit->bio = $request->about;
+
+        $edit->save();
+        
+        return redirect()->back();
+        
+    }
 }

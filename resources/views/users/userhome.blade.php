@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title',$profile->name.' | Home')
+@section('title',$profile->name.' | Profile')
 
 @section('content')
 @auth
 @include('includes.navbar')
 <div class="container-fluid mt-70 vh-100">
-    <div class="row">
+    <div class="row limit">
         {{-- Left --}}
         <div class="col-md-3 sticky">
                 <div class="panel ">
@@ -27,11 +27,11 @@
                             </div>
                             <div class="col-md-4">
                                 <a href="" class="elegant bold orange-hover">Following</a>
-                                <p class="cool-orange bold">5</p>
+                                <p class="cool-orange bold">Not Available</p>
                             </div>
                             <div class="col-md-4">
                                 <a href="" class="elegant bold orange-hover">Followers</a>
-                                <p class="cool-orange bold">1.4mil</p>
+                                <p class="cool-orange bold">Not Available</p>
                             </div>
                         </div>
                         <h3 class="elegant bold">{{$profile->name}}</h3>
@@ -40,7 +40,7 @@
                             @if($profile->work != null)
                                 <span class="work">{{$profile->work}}</span>
                             @else
-                                <span class="work">Do you have a life?</span>
+                                <span class="work">Not available</span>
                             @endif
                         </p>
                         <p>
@@ -48,7 +48,7 @@
                             @if($profile->address != null)
                                 <span class="address">{{$profile->address}}</span>
                             @else
-                                <span class="address">Where are you from?</span>
+                                <span class="address">Not available</span>
                             @endif
                         </p>
                         <p>
@@ -56,7 +56,7 @@
                             @if($profile->bio != null)
                                 <span class="bio">{{$profile->bio}}</span>
                             @else
-                                <span class="bio">Tell us about yourself?</span>
+                                <span class="bio">Not available</span>
                             @endif
                         </p>
                         <p>
@@ -110,7 +110,6 @@
             </div>
            
             @if(count($posts)<1)
-            <h1 class="text-center">Ang lungkot ng buhay mo te!</h1>
             <div class="postDiv">
 
             </div>
@@ -195,7 +194,9 @@
                                     <div class="media-body">
                                         <a href="" class="bold elegant">{{$comment->user->name}}</a>
                                     <div class="text-body commenttext{{$comment->id}}">
-                                            <p>{{$comment->comment}}</p>
+                                           <div class="limit">
+                                                <p class="comment-wrap">{{$comment->comment}}</p>
+                                           </div>
                                         </div>
                                             <textarea name="editcommenttext{{$comment->id}}" id="editcommenttext" cols="1" rows="3" class="form-control editcommenttext{{$comment->id}}">{{$comment->comment}}</textarea>
                                             <button onclick="editComment({{$comment->id}})" class="btn btn-sm btn-primary editcommentbtn{{$comment->id}}" id="editcommentbtn">Save <i class="fas fa-save"></i></button>
@@ -261,7 +262,7 @@
     {{-- RightMenu --}}
        <div class="col-md-3 hide-mobile sticky hide-tablet">
                 <div class="panel panel-default">
-                    <div class="panel-heading elegant bold">Mga Chismosa <a class="refresh pull-right">Refresh</a></div>
+                    <div class="panel-heading elegant bold">Who to follow<a class="refresh pull-right">Refresh</a></div>
                         <div class="people-nearby">
                             @include('includes.refreshpeople')
                         </div>

@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{url('/home')}}">
-                    <img alt="Brand" src="{{asset('img/ph.png')}}" style="max-height:100%">
+                Purehub
             </a>
         </div>
 
