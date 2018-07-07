@@ -50,10 +50,12 @@ class User extends Authenticatable
     public function defaultProfile(){
         return 'https://www.gravatar.com/avatar/?d=mp';
     }
-    public function follows(){
-        return $this->belongsTo('App\User','follows')->withTimestamps();
+    // public function follows(){
+    //     return $this->belongsTo('App\User','follows')->withTimestamps();
+    // }
+    public function follow(){
+        return $this->hasMany('App\Follow');
     }
-
     public function isUser(){
         return $this->role_id == 2;
     }

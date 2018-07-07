@@ -18,7 +18,9 @@
                                 <img src="{{url($profile->profilePath().$profile->profile())}}" class="img-circle" alt="{{$profile->name}}" height="200" width="200">
                                @endif
                             </a>
-                            <a href="" class="elegant bold size-1">{{$profile->name}}</a>
+                            <div>
+                                <a href="{{url('/profile')}}" class="elegant bold size-1 limit">{{$profile->name}}</a>
+                            </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -29,12 +31,12 @@
                             <div class="col-md-4 col-sm-4">
                                 <a class="elegant bold orange-hover">Following</a>
                                 <p class="cool-orange bold">
-                                   Not available
+                                   10
                                 </p>
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <a class="elegant bold orange-hover">Followers</a>
-                                <p class="cool-orange bold">Not available</p>
+                                <p class="cool-orange bold">1.5m</p>
                             </div>
                         </div>
                         <div class="row mt-1">

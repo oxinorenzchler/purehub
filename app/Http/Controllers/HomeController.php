@@ -30,6 +30,7 @@ class HomeController extends Controller
         // dd(Auth::user()->likes->contains(78));
         $id = Auth::id();
         $posts = Post::orderBy('created_at','desc')->get();
+        // $posts = User::orderBy('created_at','desc')->post()->get();
         $postDetails = Post::orderBy('created_at','desc')->where('user_id',Auth::id())->get();
         $comments = Comment::all();
         $users = User::whereNotIn('id',array($id))->inRandomOrder()->limit(3)->get();
